@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Publicaciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            background-color: #5a9fd4;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Contenedor de publicaciones */
+        #publicaciones-container {
+            margin: 20px;
+        }
+
+        .publicacion {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .publicacion h3 {
+            color: #333;
+        }
+
+        .publicacion p {
+            color: #555;
+        }
+
+        .btn-eliminar {
+            background-color: #e74c3c;
+        }
+
+        .btn-eliminar:hover {
+            background-color: #c0392b;
+        }
+
+        /* Estilo del formulario */
+        #formulario {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        #formulario input,
+        #formulario select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #formulario button {
+            background-color: #3498db;
+        }
+
+        #formulario button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lista de Publicaciones</h1>
+<div id="publicaciones-container"></div>
+<button onclick="mostrarFormulario()">Agregar Publicación</button>
+
+<!-- Formulario para agregar o modificar publicaciones -->
+<div id="formulario">
+    <h2 id="form-title">Nueva Publicación</h2>
+    <form id="publicacionForm">
+        <input type="hidden" id="publicacionId">
+        <label for="nombreChacra">Nombre de la Chacra:</label>
+        <input type="text" id="nombreChacra" required><br>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" required><br>
+        <label for="ubicacionChacra">Ubicación:</label>
+        <input type="text" id="ubicacionChacra" required><br>
+        <label for="estado">Estado:</label>
+        <!-- Reemplazamos el input por un select -->
+        <select id="estado" required>
+            <option value="DISPONIBLE">Disponible</option>
+            <option value="OCUPADO">Ocupado</option>
+        </select><br>
+        <button type="button" onclick="guardarPublicacion()">Aceptar</button>
+    </form>
+</div>
+
+<script>
+    let publicaciones = [];
+
+    // Obtener y mostrar todas las publicaciones
+    function cargarPublicaciones() {
+        fetch('/api/publicaciones')
+            .then(response => response.json())
+            .then(data => {
+                publicaciones = data;
+                const container = document.getElementById('publicaciones-container');
+                container.innerHTML = ''; // Limpia el contenido anterior
+                publicaciones.forEach(publicacion => {
+                    const div = document.createElement('div');
+                    div.classList.add('publicacion');
+                    div.innerHTML = `
+                        <h3>${publicacion.nombreChacra}</h3>
+                        <p>${publicacion.descripcion}</p>
+                        <p>Ubicación: ${publicacion.ubicacionChacra}</p>
+                        <p>Estado: ${publicacion.estado}</p>
+                        <button onclick="mostrarFormularioEditar(${publicacion.id})" style="background-color: #3498db;">Editar</button>
+                        <button onclick="eliminarPublicacion(${publicacion.id})" class="btn-eliminar">Eliminar</button>
+                    `;
+                    container.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error al cargar las publicaciones:', error));
+    }
+
+
+    // Mostrar formulario de creación o edición
+    function mostrarFormulario() {
+        document.getElementById('formulario').style.display = 'block';
+        document.getElementById('form-title').innerText = 'Nueva Publicación';
+        document.getElementById('publicacionForm').reset(); // Limpiar el formulario
+        document.getElementById('publicacionId').value = ''; // Asegurarse de que no haya un ID de publicación
+    }
+
+    // Mostrar formulario para editar una publicación
+    function mostrarFormularioEditar(id) {
+        const publicacion = publicaciones.find(p => p.id === id);
+        document.getElementById('formulario').style.display = 'block';
+        document.getElementById('form-title').innerText = 'Editar Publicación';
+        document.getElementById('publicacionId').value = publicacion.id;
+        document.getElementById('nombreChacra').value = publicacion.nombreChacra;
+        document.getElementById('descripcion').value = publicacion.descripcion;
+        document.getElementById('ubicacionChacra').value = publicacion.ubicacionChacra;
+        // Seleccionar el estado adecuado
+        document.getElementById('estado').value = publicacion.estado;
+    }
+
+    // Crear o actualizar una publicación
+    function guardarPublicacion() {
+        const id = document.getElementById('publicacionId').value;  // Si el ID está en el formulario
+        const productorId = 1;  // Ajusta esto según el ID del productor
+        const nombreChacra = document.getElementById('nombreChacra').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const ubicacionChacra = document.getElementById('ubicacionChacra').value;
+        const estado = document.getElementById('estado').value;
+
+        const method = id ? 'PUT' : 'POST';  // Si el ID existe, se hace PUT, sino POST para crear
+        const url = id ? `/api/publicaciones/modificar/${id}` : '/api/publicaciones/crear';  // Si ID existe, se hace PUT, si no se hace POST
+
+        fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: id,
+                productor: { id: productorId },  // Relación con el productor (ajustar según lo que necesites)
+                nombreChacra: nombreChacra,
+                descripcion: descripcion,
+                ubicacionChacra: ubicacionChacra,
+                estado: estado,
+            }),
+        })
+        .then(response => response.text())
+        .then(message => {
+            alert(message);  // Muestra un mensaje de éxito o error
+            cargarPublicaciones();  // Recarga las publicaciones para mostrar los cambios
+            document.getElementById('formulario').style.display = 'none';  // Oculta el formulario después de guardar
+        })
+        .catch(error => console.error('Error al guardar la publicación:', error));
+    }
+
+    // Eliminar una publicación
+    function eliminarPublicacion(id) {
+        fetch(`/api/publicaciones/eliminar/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.text())
+        .then(message => {
+            alert(message);
+            cargarPublicaciones();
+        })
+        .catch(error => console.error('Error al eliminar la publicación:', error));
+    }
+
+    // Carga las publicaciones al cargar la página
+    window.onload = cargarPublicaciones;
+</script>
+
+</body>
+</html>

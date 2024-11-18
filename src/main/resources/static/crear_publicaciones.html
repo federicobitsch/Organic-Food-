@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Publicación</title>
+</head>
+<body>
+<h1>Crear Nueva Publicación</h1>
+
+<form action="/crear-publicacion" method="post">
+    <label for="nombreChacra">Nombre de la Chacra:</label>
+    <input type="text" id="nombreChacra" name="nombreChacra" required><br><br>
+
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" required><br><br>
+
+    <label for="ubicacionChacra">Ubicación de la Chacra:</label>
+    <input type="text" id="ubicacionChacra" name="ubicacionChacra" required><br><br>
+
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" required>
+        <option value="DISPONIBLE">Disponible</option>
+        <option value="OCUPADO">Ocupado</option>
+    </select><br><br>
+
+    <button type="submit">Crear Publicación</button>
+</form>
+</body>
+</html>

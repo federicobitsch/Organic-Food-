@@ -1,0 +1,14 @@
+Agregar Producto al sistema por ejemplo:|
+                                        |
+ProductoController                      |
+Producto DTO                            |
+Producto Model                          |
+ProductoRepository                      |
+ProductoService                         |
+------------------                      |
+nombre, categoria. precio,cantidad      |
+                                        |
+//Categoría del producto, por ejemplo   |
+//Precio , Cantidad que tiene en stock  |
+                                        |
+----------------------------------------|

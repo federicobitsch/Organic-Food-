@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a Organic Food</title>
+    <style>
+
+        /* Estilos Generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+
+        header {
+            background-color: #2e8b57;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #555;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #2e8b57;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .button-container a {
+            text-decoration: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #237a49;
+        }
+
+        .product-section, .testimonial-section {
+            width: 80%;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .product-section h2, .testimonial-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2e8b57;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product {
+            width: 30%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .testimonial {
+            width: 40%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial h4 {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2e8b57;
+        }
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Estilos para la sección CTA (Call to Action) */
+        .cta-section {
+            background-color: #4CAF50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e7e7e7;
+        }
+
+        /* Estilos para la sección sobre nosotros */
+        .about-us-section {
+            padding: 40px;
+            text-align: center;
+            background-color: #e7f7e5;
+            margin-top: 50px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-us-section h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .about-us-section p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        /* Estilos para iconos de redes sociales */
+        .social-media-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-media-icons img {
+            width: 40px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .social-media-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos para el footer */
+        footer {
+            background-color: #5a9d72;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>Bienvenido a Organic Food</h1>
+</header>
+
+<p>Explora nuestro proyecto de gestión de chacras y productos orgánicos. Navega por nuestras secciones y encuentra todo lo que necesitas.</p>
+
+<div class="button-container">
+    <a href="Contacto-Soporte.html"><button>Contacto y Soporte</button></a>
+    <a href="publicaciones.html"><button>Publicaciones</button></a>
+    <a href="login"><button>Iniciar Sesión</button></a>
+    <a href="register"><button>Registrarse</button></a>
+</div>
+
+<!-- Sección de Productos Orgánicos -->
+<div class="product-section">
+    <h2>Nuestros Productos Orgánicos</h2>
+    <div class="products">
+        <!-- Producto 1 -->
+        <div class="product">
+            <img src="comida-organica-3.jpg" alt="Producto Orgánico 1">
+            <h3>Producto Orgánico 1</h3>
+            <p>Descripción breve del producto orgánico 1. Ideal para tu salud.</p>
+        </div>
+        <!-- Producto 2 -->
+        <div class="product">
+            <img src="index-2.jpg" alt="Producto Orgánico 2">
+            <h3>Producto Orgánico 2</h3>
+            <p>Descripción breve del producto orgánico 2. Perfecto para tu bienestar.</p>
+        </div>
+        <!-- Producto 3 -->
+        <div class="product">
+            <img src="index-organic.jpg" alt="Producto Orgánico 3">
+            <h3>Producto Orgánico 3</h3>
+            <p>Descripción breve del producto orgánico 3. Nutrición natural.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de Testimonios -->
+<div class="testimonial-section">
+    <h2>Lo que dicen nuestros clientes</h2>
+    <div class="testimonial-container">
+        <!-- Testimonio 1 -->
+        <div class="testimonial">
+            <p>"Gracias a Organic Food, mis chacras han sido un éxito. Los productos que ofrecemos son frescos y de calidad."</p>
+            <h4>Federico Bitsch - Productor</h4>
+        </div>
+        <!-- Testimonio 2 -->
+        <div class="testimonial">
+            <p>"La plataforma es fácil de usar y me ha ayudado a gestionar mejor mi negocio de productos orgánicos."</p>
+            <h4>Momo Benavidez - Cliente Satisfecho</h4>
+        </div>
+        <!-- Testimonio 3 -->
+        <div class="testimonial">
+            <p>"La plataforma es fácil de usar y me ha ayudado a gestionar mejor mi negocio de productos orgánicos."</p>
+            <h4>Martin disalvo - Cliente Satisfecho</h4>
+        </div>
+        <!-- Testimonio 4 -->
+        <div class="testimonial">
+            <p>"La plataforma es fácil de usar y me ha ayudado a gestionar mejor mi negocio de productos orgánicos."</p>
+            <h4> Susana Jihn - Cliente Satisfecha</h4>
+        </div>
+    </div>
+</div>
+
+<!-- Sección CTA (Call to Action) -->
+<div class="cta-section">
+    <h2>Unete a nuestra comunidad saludable</h2>
+    <p>Empieza hoy mismo a disfrutar de productos organicos frescos y saludables.</p>
+    <a href="register"><button class="cta-button">Registrate ahora</button></a>
+</div>
+
+<!-- Sección sobre nosotros -->
+<div class="about-us-section">
+    <h2>¿Quiénes somos?</h2>
+    <p>Somos una empresa de Tierra del Fuego comprometida con el bienestar de nuestros clientes, ofreciendo productos orgánicos de alta calidad que respetan el medio ambiente. con productores de la ciudad de Rio Grande. </p>
+</div>
+
+
+
+<div class="product-section">
+    <h2>Blog - Beneficios </h2>
+    <div class="products">
+        <!-- Producto 1 -->
+        <div class="product">
+            <img src="comida-organica-3.jpg" alt="Producto Orgánico 1">
+            <h3>Ideal para tu salud</h3>
+            <p>Descripción breve del producto orgánico 1. Ideal para tu salud.</p>
+        </div>
+        <!-- Producto 2 -->
+        <div class="product">
+            <img src="index-2.jpg" alt="Producto Orgánico 2">
+            <h3>Beneficios de los productos</h3>
+            <p>Descripción breve del producto orgánico 2. Perfecto para tu bienestar.</p>
+        </div>
+        <!-- Producto 3 -->
+        <div class="product">
+            <img src="index-organic.jpg" alt="Producto Orgánico 3">
+            <h3>Nutricion Natural</h3>
+            <p>Descripción breve del producto orgánico 3. Nutrición natural.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de Iconos de Redes Sociales -->
+<div class="social-media-icons">
+    <a href="https://facebook.com" target="_blank">
+        <img src="facebook-icon.png" alt="Facebook">
+    </a>
+    <a href="https://instagram.com" target="_blank">
+        <img src="instagram-icon.jpg" alt="Instagram">
+    </a>
+    <a href="https://twitter.com" target="_blank">
+        <img src="twitter-icon.png" alt="Twitter">
+    </a>
+</div>
+
+<footer>
+    <p>&copy; 2024 Organic Food. Todos los derechos reservados | DARKOR TECH Solutions | </p>
+</footer>
+
+
+</body>
+</html>
