@@ -22,26 +22,24 @@ public class SecurityConfig {
         this.customUserDetailsService = customProductorDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Desactiva CSRF para pruebas, habilítalo en producción
-
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // Permite el acceso a todas las URLs sin autenticación
-
+                        .requestMatchers("/login", "/register", "/public/**").permitAll()
+                        //.requestMatchers("").authenticated()
+                        .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults()) // Se puede quitar si no deseas habilitar HTTP Basic
+                .httpBasic(httpBasic -> {}) // Replaces httpBasic() with the latest API
                 .formLogin(form -> form
-                        .loginPage("/login")  // Ruta de la página de login
-                        .defaultSuccessUrl("/home", true)  // Redirige después del login
-                        .permitAll()  // Permite acceso a la página de login
+                        .defaultSuccessUrl("/index", true)
+                        .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login?logout")  // Redirige después de cerrar sesión
+                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
-                );
+                )
+                .csrf(csrf -> csrf.disable()); // Disables CSRF for testing purposes
 
         return http.build();
     }

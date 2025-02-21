@@ -34,17 +34,16 @@ public class ProductorService {
     public void registrarProductor(Productor productor) {
         // Codificar la contraseña antes de guardarla
         productor.setContrasena(passwordEncoder.encode(productor.getContrasena()));
-
         // Guardar el productor en la base de datos
         productorRepository.save(productor);
     }
 
-    // Método para obtener un productor por ID
+    // Metodo para obtener un productor por ID
     public Optional<Productor> obtenerProductorPorId(Long id) {
         return productorRepository.findById(id);
     }
 
-    // Método para modificar un productor existente
+    // Metodo para modificar un productor existente
     public void modificarProductor(Long id, Productor productor) throws Exception {
         Optional<Productor> productorExistente = productorRepository.findById(id);
 
@@ -61,7 +60,7 @@ public class ProductorService {
         productorRepository.save(productorAModificar);
     }
 
-    // Método para eliminar un productor
+    // Metodo para eliminar un productor
     public void eliminarProductor(Long id) throws Exception {
         Optional<Productor> productorExistente = productorRepository.findById(id);
 

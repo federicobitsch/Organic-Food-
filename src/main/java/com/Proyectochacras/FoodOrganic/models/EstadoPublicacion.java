@@ -4,6 +4,5 @@ package com.Proyectochacras.FoodOrganic.models;
 
 public enum EstadoPublicacion {
     DISPONIBLE,
-    OCUPADO,
     ELIMINADA
 }

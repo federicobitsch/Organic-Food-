@@ -12,3 +12,33 @@ nombre, categoria. precio,cantidad      |
 //Precio , Cantidad que tiene en stock  |
                                         |
 ----------------------------------------|
+Hacer una Interfaz Amigable que en todas vuelva para el Index(Home)
+Cuando se elimine una publicacion esta el EstadoPublicacion (Disponible,Eliminada)
+Cuando sea por defecto que sea DISPONIBLE y cuando sea ELIMINADA MARQUE .
+
+EL 2DO LLAMADO ......
+
+//un buen login y register , las sessiones
+//esta ruta entra el administrador y un USUARIO no puede entrar ahi .
+//validaciones basicas , longigud , cuando modificas algo ¿ estas seguro de modificar?
+//Que no este NULL NINGUNA TABLA
+//cerrar SESSION correctamaente
+//perfil este apartado quien esta logueado , que USUARIO ESTA LOGUEADO EN ESE MOMENTO (LOGO Y EL NOMBRE)
+//Cuando vos apretas el logo puedas modificar tus datos y que aparezcan
+
+//Nuestros productos organicos - Productos de la comunidad
+
+//Modificar PUBLICACIONES que sea mas lindo interactivo ,(Con tarjetas) del MISMO TAMAÑO y que se adapten
+
+//Que los admins puedan crear BLOGS referentes a los productos organicos (Que es saludable) ellos seran listados en las seccion de BLOG
+
+//Y los usuarios podran visualizar y comentar dichos blogs
+
+//los administradores podran MODIFICAR y ELIMINAR los BLOGS ademas de ELIMINAR COMENTARIOS de USUARIOS en los BLOGS (BORRADO LOGICO)
+
+//Y los usuarios podran comentar blogs y modificar sus propios comentarios
+
+//Quien hizo el comentario , fecha y hora y usuario y logo (edit)
+
+
+

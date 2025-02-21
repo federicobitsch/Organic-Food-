@@ -6,8 +6,8 @@
     <style>
         /* Estilos generales */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f9f6f0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,92 +16,99 @@
         }
 
         h1 {
-            color: #333;
+            color: #2c3e50;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 26px;
+            font-weight: bold;
         }
 
         /* Estilos del formulario */
         form {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            text-align: center;
         }
 
         label {
             font-size: 14px;
-            color: #555;
-            margin-bottom: 8px;
+            color: #34495e;
+            margin-bottom: 5px;
+            text-align: left;
             display: block;
         }
 
         input[type="email"],
         input[type="password"] {
             padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            font-size: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
             width: 100%;
             box-sizing: border-box;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fdfdfd;
         }
 
         input[type="email"]:focus,
         input[type="password"]:focus {
-            border-color: #4CAF50;
+            border-color: #27ae60;
+            box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
             outline: none;
         }
 
         button {
             padding: 12px;
             font-size: 16px;
-            color: #fff;
-            background-color: #4CAF50;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #27ae60;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
             width: 100%;
+            box-shadow: 0 4px 8px rgba(39, 174, 96, 0.4);
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #219150;
         }
 
         .link-container {
-            margin-top: 20px;
+            margin-top: 15px;
+            text-align: center;
         }
 
         .link-container a {
             font-size: 14px;
-            color: #4CAF50;
+            color: #27ae60;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .link-container a:hover {
-            color: #388e3c;
+            color: #1e8449;
         }
 
-        /* Estilos para mejorar la experiencia en dispositivos móviles */
+        /* Estilos responsivos para móviles */
         @media (max-width: 480px) {
             form {
                 width: 90%;
-                padding: 20px;
+                padding: 30px;
             }
 
             h1 {
-                font-size: 20px;
+                font-size: 22px;
             }
         }
     </style>
+
 </head>
 <body>
 

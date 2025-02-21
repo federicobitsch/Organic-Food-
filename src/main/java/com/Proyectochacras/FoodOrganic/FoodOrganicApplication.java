@@ -33,13 +33,11 @@ public class FoodOrganicApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//este metodo no hace falta eliminar la base de datos
-
 		if (productorRepository.findAll().isEmpty()) {
 
 			Productor productor1 = new Productor();
 			productor1.setContrasena("12345");
 			productor1.setCorreo("productor1@correo.com");
-
 			productor1.setRol(Rol.USUARIO);
 
 			Productor productor2 = new Productor();
@@ -70,13 +68,25 @@ public class FoodOrganicApplication implements CommandLineRunner {
 			// Crear un usuario de ejemplo
 			Usuario usuario = new Usuario();
 			usuario.setEmail("usuario@example.com");
-			usuario.setPassword("password123");  // En un escenario real, guarda contraseñas encriptadas
-			usuario.setRole(Rol.USUARIO);  // O asigna otro rol como ADMINISTRADOR si es necesario
+			usuario.setPassword("password123");
+			usuario.setRole(Rol.USUARIO);
+
+			Usuario usuario2 = new Usuario();
+			usuario2.setEmail("test@test.com");
+			usuario2.setPassword("12345");
+			usuario2.setRole(Rol.ADMINISTRADOR);
+
+			Usuario usuario3 = new Usuario();
+			usuario3.setEmail("profesor@gmail.com");
+			usuario3.setPassword("profesor");
+			usuario3.setRole(Rol.USUARIO);
 
 			// Guardar el usuario en la base de datos
 			usuarioService.saveUsuario(usuario);
 
+			usuarioService.saveUsuario(usuario2);
 
+			usuarioService.saveUsuario(usuario3);
 			// Guardar las publicaciones en la base de datos
 			publicacionService.crearPublicacion(
 					productor1.getId(),

@@ -73,8 +73,17 @@ public class PublicacionService {
 //    }
 
     //Eliminar (soft delete) una publicación (cambiar el estado a ELIMINADA)
+    //Hacer que por defecto sea el DISPONIBLE .
     public boolean eliminarPublicacion(Long id) {
      Publicacion publicacion = publicacionRepository.findById(id).orElse(null);
+
+     // // Si no se establece un rol, asignar el rol por defecto
+        //        if (usuario.getRole() == null) {
+        //            usuario.setRole(Rol.USUARIO);
+        //        }
+        //        return usuarioRepository.save(usuario);
+        //    }
+
       if (publicacion != null) {
           publicacion.setEstadoPublicacion(EstadoPublicacion.ELIMINADA); // Cambiar el estado
           publicacionRepository.save(publicacion); // Guardar la publicación con el estado actualizado
@@ -83,9 +92,3 @@ public class PublicacionService {
       return false;
   }
 }
-
-
-
-//Login simple
-//registro y login hacerlo 
-

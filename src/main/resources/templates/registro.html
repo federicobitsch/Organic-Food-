@@ -72,17 +72,20 @@
 <body>
 <div class="form-container">
     <h1>Registro de Productor</h1>
-    <form action="#" th:action="@{/register}" th:object="${productor}" method="post">
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required="required" th:field="*{correo}" /><br/>
+    <!--EL /register no lo cambio a user/register de usuario?-->
 
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required="required" th:field="*{contrasena}" /><br/>
+    <!--<form action="#" th:action="@{register}" th:object="${usuario}" method="post">-->
+    <form action="/register" method="post" th:object="${usuario}">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" th:field="*{email}" required /><br/>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" th:field="*{password}" required /><br/>
 
         <button type="submit">Registrar</button>
     </form>
-    <a href="/login">¿Ya tienes cuenta? Inicia sesión aquí.</a>
 
+    <a href="/login">¿Ya tienes cuenta? Inicia sesión aquí.</a>
     <!-- Botón para redirigir a la página de Contacto-Soporte -->
     <a href="/Contacto-Soporte.html">
         <button type="button">Ir a Contacto-Soporte</button>
